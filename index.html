@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-light" style="background-color: #accbe0">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">CRUD APPLICATION</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+              Navbar text with an inline element
+            </span>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container mt-5 col-6">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Chapter Name"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+          />
+          <button
+            id="add_btn"
+            class="btn btn-outline-secondary, btn btn-danger"
+            type="button"
+            id="button-addon2"
+            <!--
+            onclick="add_chapter()"
+            --
+          >
+            >> Add
+          </button>
+        </div>
+
+        <!-- this is for the list containt -->
+
+        <div class="list-group" id="parent_List">
+          <li class="list-group-item d-flex justify-content-between">
+            <h3 class="flex-grow-1">My Movies List</h3>
+            <button class="btn btn-warning mx-3" onclick="edit_chapter(this)">
+              Edit
+            </button>
+            <button class="btn btn-danger" onclick="remove_item(this)">
+              Remove
+            </button>
+          </li>
+        </div>
+        <div class="list-group" id="parent_List">
+          <li class="list-group-item d-flex justify-content-between">
+            <h3 class="flex-grow-1">RRR</h3>
+            <button class="btn btn-warning mx-3" onclick="edit_chapter(this)">Edit</button>
+            <button class="btn btn-danger" onclick="remove_item(this)">
+              Remove
+            </button>
+          </li>
+        </div>
+        <div class="list-group" id="parent_List">
+          <li class="list-group-item d-flex justify-content-between">
+            <h3 class="flex-grow-1">Pushpa</h3>
+            <button class="btn btn-warning mx-3" onclick="edit_chapter(this)">Edit</button>
+            <button class="btn btn-danger" onclick="remove_item(this)">
+              Remove
+            </button>
+          </li>
+        </div>
+        <div class="list-group" id="parent_List">
+          <li class="list-group-item d-flex justify-content-between">
+            <h3 class="flex-grow-1">Bahubali</h3>
+            <button class="btn btn-warning mx-3" onclick="edit_chapter(this)">Edit</button>
+            <button class="btn btn-danger" onclick="remove_item(this)">
+              Remove
+            </button>
+          </li>
+        </div>
+        <div class="list-group" id="parent_List">
+          <li class="list-group-item d-flex justify-content-between">
+            <h3 class="flex-grow-1">Bahubali-2</h3>
+            <button class="btn btn-warning mx-3" onclick="edit_chapter(this)">Edit</button>
+            <button class="btn btn-danger" onclick="remove_item(this)">
+              Remove
+            </button>
+          </li>
+        </div>
+        <div class="list-group" id="parent_List">
+          <li class="list-group-item d-flex justify-content-between">
+            <h3 class="flex-grow-1">Magadheera</h3>
+            <button class="btn btn-warning mx-3" onclick="edit_chapter(this)">Edit</button>
+            <button class="btn btn-danger" onclick="remove_item(this)">
+              Remove
+            </button>
+          </li>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script>
+    let add_btn = document.getElementById("add_btn");
+    add_btn.addEventListener("click", add_chapter);
+    let parent_List = document.getElementById("parent_List");
+    function add_chapter(e) {
+      let parent_List = document.getElementById("parent_List");
+      // if (parent_List.children[0].className =="empty_massage") {
+      //   parent_List.children[0].remove();
+      // }
+      let current_btn = e.currentTarget;
+      let current_input = current_btn.previousElementSibling;
+      let current_item = current_input.value;
+
+      let newLi = document.createElement("li");
+      //   newLi.classList.add("list-group-item");
+      newLi.className = "list-group-item d-flex justify-content-between";
+      newLi.innerHTML = `<h3 class="flex-grow-1">${current_item}</h3> 
+            <button class="btn btn-warning mx-3 " onclick="edit_chapter(this)">Edit</button>
+            <button class="btn btn-danger" onclick="remove_item(this)">Remove</button>`;
+
+      parent_List.appendChild(newLi);
+    }
+
+    function remove_item(current_element) {
+      current_element.parentElement.remove();
+      let parent_List = document.getElementById("parent_List");
+      if (parent_List.children.length <= 0) {
+        let new_empty_massage = document.createElement("h3");
+        // new_empty_massage.classList.add("empty_massage");
+        new_empty_massage.textContent = "nothing to show 😉 reload the site";
+        parent_List.appendChild(new_empty_massage);
+      }
+    }
+
+    function edit_chapter(curr_element) {
+      if (curr_element.textContent == "Done") {
+        curr_element.textContent = "Edit";
+        let currChapterName = curr_element.previousElementSibling.value;
+        let currHeading = document.createElement("h3");
+        currHeading.className = "flex-grow-1";
+        currHeading.textContent = currChapterName;
+        curr_element.parentElement.replaceChild(
+          currHeading,
+          curr_element.previousElementSibling
+        );
+      } else {
+        // console.log(curr_element.previousElementSibling);
+        curr_element.textContent = "Done";
+        let currChapterName = curr_element.previousElementSibling.textContent;
+        let currInput = document.createElement("input");
+        currInput.type = "text";
+        currInput.placeholder = "Enter movie name";
+        currInput.className = "form-control";
+        currInput.value = currChapterName;
+
+        curr_element.parentElement.replaceChild(
+          currInput,
+          curr_element.previousElementSibling
+        );
+      }
+    }
+  </script>
+</html>
